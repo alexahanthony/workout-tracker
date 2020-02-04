@@ -1,35 +1,11 @@
+
 const router = require("express").Router();
 const Workout = require("../models/workouts.js");
 
-//creates exercise
-router.put("/api/workouts/:id", (req, res) => {
-  Workout.update({
-    exercises: req.body.text,
-  }, {
-    where: {
-      id: req.params.id
-    }
-  }).then(function(dbWorkout) {
-    res.json(dbWorkout);
-  });
-  
-});
 
 //creates workout
-router.put("/api/workouts", ({ body }, res) => {
-  Workout.create({
-    where: {
-      id: req.params.id
-    }
-  }).then(function(dbWorkout) {
-    res.json(dbWorkout);
-  });
-});
-
-//pulls all exercises and puts on page
-router.get("/api/workouts", (req, res) => {
-  Workout.find({})
-    .sort({ day: -1 })
+router.post("/api/workouts", (req, res) => {
+  Workout.create({})
     .then(dbWorkout => {
       res.json(dbWorkout);
     })
@@ -38,16 +14,123 @@ router.get("/api/workouts", (req, res) => {
     });
 });
 
+router.put("/api/workouts/:id", (req, res) => {
+  Workout.create({})
+    .then(dbWorkout => {
+      res.json(dbWorkout);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
+
+// //creates exercise
+// router.put("/api/workouts/:id", (req, res) => {
+//   Workout.update(
+//     { _id: req.params.id},
+//     { $addToSet: { exercises: req.body.text}
+//   }).then(function(dbWorkout) {
+//     res.json(dbWorkout);
+//   });
+  
+// });
+
+//pulls all exercises and puts on page
+router.get("/api/workouts", (req, res) => {
+  Workout.find({})
+    .then(dbWorkout => {
+      res.json(dbWorkout);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
+
+router.get("/api/workouts/range", (req, res) => {
+  Workout.find({})
+    .then(dbWorkout => {
+      res.json(dbWorkout);
+      // res.sendFile('stats.html', {root: './public/'})
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+
 //feeds exercise page
 router.get('/exercise', function(req, res) {
     res.sendFile('exercise.html', {root: './public/'})
 });
 
-//feeds stats page
+//feeds exercise page
 router.get('/stats', function(req, res) {
   res.sendFile('stats.html', {root: './public/'})
 });
 
 
 
+
+
 module.exports = router;
+
+
+
+
+
+// const router = require("express").Router();
+// //const Workout = require("../models/workouts.js");
+// const db = require("../models/workouts.js");
+// const express = require("express");
+// const app = express();
+// const logger = require("morgan");
+// app.use(logger("dev"));
+
+// //creates exercise
+// app.put("/api/workouts/:id", (req, res) => {
+//   ({_id}) => db.Workout.findOneAndUpdate({}, { $push: { exercises: req.body.text } }, { new: true })
+//     .then(dbWorkout => {
+//       res.json(dbWorkout);
+//     })
+//     .catch(err => {
+//       res.json(err);
+//     });
+  
+// });
+
+// //creates workout
+// app.post("/api/workouts", (req, res) => {
+//   db.Workout.create(body)
+//   .then(dbWorkout => {
+//     res.json(dbWorkout);
+//   })
+//   .catch(err => {
+//     res.json(err);
+//   });
+// });
+
+// //pulls all exercises and puts on page
+// app.get("/stats", (req, res) => {
+//     db.Workout.find({})
+//       .populate("workout")
+//       .then(dbWorkout => {
+//         res.json(dbWorkout);
+//       })
+//       .catch(err => {
+//         res.json(err);
+//       });
+//   });
+
+// //feeds exercise page
+// router.get('/exercise', function(req, res) {
+//     res.sendFile('exercise.html', {root: './public/'})
+// });
+
+// //feeds stats page
+// router.get('/stats', function(req, res) {
+//   res.sendFile('stats.html', {root: './public/'})
+// });
+
+
+
+// module.exports = router;

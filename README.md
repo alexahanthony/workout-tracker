@@ -1,29 +1,37 @@
-# workout-tracker
+# Unit 06: Workout Tracker
 
-# Unit 17 Nosql Homework: Workout Tracker
+![Screenshot](screenshot.png)
 
-For this assignment, you'll create a workout tracker. You have already been provided with the front end code in the `Develop` folder. This assignment will require you to create Mongo database with a Mongoose schema and handle routes with Express.
+# Table of Contents (Optional)
+N/A
 
-## User Story
+# Installation
+View website. https://safe-wave-76774.herokuapp.com/
 
-* As a user, I want to be able to view create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
+View Github Repository. https://github.com/alexahanthony/workout-tracker
 
-## Acceptance Criteria
+# Usage
+This website allows you to keep track of your workouts and exercises. You can add a cardio or weightroom workout and details about each. You can view the dashboard which shows your workout history overtime. 
 
-When the user loads the page, they should be given the option to create a new workout, or continue with their last workout.
+# Credits
+There were no collaborators, (other than classmates and teacher feedback).
 
-The user should be able to:
+# NPM Packages: 
+* "compression": "^1.7.4",
+* "express": "^4.16.3",
+* "fs": "0.0.1-security",
+* "mongoose": "^5.3.16",
+* "morgan": "^1.9.1"
 
-  * Add exercises to a previous workout plan.
+# License
+N/A
 
-  * Add new exercises to a new workout plan.
+# Badges
+N/A
 
-  * View multiple the combined weight of multiple exercises on the `stats` page.
+# Contributing
+N/A
 
-## Submission on BCS
+# Tests
+N/A
 
-You are required to submit the following:
-
-* The URL to the deployed application
-
-* The URL to the Github repository

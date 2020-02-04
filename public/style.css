@@ -435,3 +435,12 @@ form > button {
     right: -320px;
   }
 }
+
+.yellow {
+  color: rgb(244, 216, 8);
+}
+
+a {
+  color: rgb(247, 157, 255);
+  margin-left: 15pt;
+}
