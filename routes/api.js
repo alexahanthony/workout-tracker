@@ -14,26 +14,29 @@ router.post("/api/workouts", (req, res) => {
     });
 });
 
-router.put("/api/workouts/:id", (req, res) => {
-  Workout.create({})
-    .then(dbWorkout => {
-      res.json(dbWorkout);
-    })
-    .catch(err => {
-      res.status(400).json(err);
-    });
-});
-
-// //creates exercise
 // router.put("/api/workouts/:id", (req, res) => {
-//   Workout.update(
-//     { _id: req.params.id},
-//     { $addToSet: { exercises: req.body.text}
-//   }).then(function(dbWorkout) {
-//     res.json(dbWorkout);
-//   });
-  
+//   console.log(req)
+//   Workout.create(req.body.text)
+//     .then(dbWorkout => {
+//       res.json(dbWorkout);
+//     })
+//     .catch(err => {
+//       res.status(400).json(err);
+//     });
 // });
+
+//creates exercise
+router.put("/api/workouts/:id", (req, res) => {
+  console.log(req.params.id)
+  console.log(req.body)
+  Workout.update(
+    { _id: req.params.id},
+    { $addToSet: { exercises: req.body}
+  }).then(function(dbWorkout) {
+    res.json(dbWorkout);
+  });
+  
+});
 
 //pulls all exercises and puts on page
 router.get("/api/workouts", (req, res) => {
